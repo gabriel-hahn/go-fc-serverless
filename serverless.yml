@@ -11,9 +11,10 @@ provider:
       statements:
         - Effect: Allow
           Action:
-            - dynamodb: PutItem
+            - dynamodb:PutItem
+            - dynamodb:Scan
           Resource:
-            - ""
+            - "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/ProductsVideo"
 
 package:
   patterns:
@@ -22,11 +23,17 @@ package:
 
 functions:
   insertProduct:
-    handler: bin/functions
+    handler: bin/insertProduct
     events:
       - httpApi:
           path: /product/insert
           method: post
+  listProducts:
+    handler: bin/listProducts
+    events:
+      - httpApi:
+          path: /products
+          method: get
 
 resources:
   Resources:
