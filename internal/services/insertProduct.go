@@ -1,8 +1,8 @@
 package services
 
 import (
-	"go-fc-serverless/src/data"
-	"go-fc-serverless/src/database"
+	"go-fc-serverless/internal/data"
+	"go-fc-serverless/internal/database"
 
 	"encoding/json"
 	"strconv"
